@@ -54,15 +54,6 @@
         <dd><code>{{ info.payment_reference }}</code></dd>
         {% endif %}
 
-        {% if info.order_url %}
-        <dt>{% trans "Order recap" %}</dt>
-        <dd>
-          <a href="{{ info.order_url }}" target="_blank" rel="noopener noreferrer">
-            {{ info.order_url }}
-          </a>
-        </dd>
-        {% endif %}
-
         {% if info.block_number %}
         <dt>{% trans "Block number" %}</dt>
         <dd>{{ info.block_number }}</dd>
