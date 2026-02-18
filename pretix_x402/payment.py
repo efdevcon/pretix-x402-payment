@@ -68,3 +68,7 @@ class X402CryptoPayment(BasePaymentProvider):
         if tx:
             return f"{symbol} — {tx[:10]}…{tx[-6:]}"
         return symbol
+
+    def api_payment_details(self, payment):
+        """Expose payment info via the REST API `details` field."""
+        return payment.info_data or {}
