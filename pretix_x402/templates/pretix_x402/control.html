@@ -1,0 +1,70 @@
+{% load i18n %}
+
+{% if info %}
+<div style="font-size: 13px; line-height: 1.6;">
+    <dl class="dl-horizontal">
+        {% if info.tx_hash %}
+        <dt>{% trans "Transaction" %}</dt>
+        <dd>
+            {% if tx_url %}
+                <a href="{{ tx_url }}" target="_blank" rel="noopener noreferrer">
+                    <code>{{ info.tx_hash }}</code>
+                </a>
+            {% else %}
+                <code>{{ info.tx_hash }}</code>
+            {% endif %}
+        </dd>
+        {% endif %}
+
+        {% if chain_name %}
+        <dt>{% trans "Network" %}</dt>
+        <dd>{{ chain_name }}{% if info.chain_id %} ({{ info.chain_id }}){% endif %}</dd>
+        {% endif %}
+
+        {% if info.token_symbol %}
+        <dt>{% trans "Token" %}</dt>
+        <dd>
+            {{ info.token_symbol }}
+            {% if info.token_address %}
+                <span style="color: #888; font-size: 12px;">({{ info.token_address }})</span>
+            {% endif %}
+        </dd>
+        {% endif %}
+
+        {% if info.amount %}
+        <dt>{% trans "Amount" %}</dt>
+        <dd>{{ info.amount }} {{ info.token_symbol }}</dd>
+        {% endif %}
+
+        {% if info.payer %}
+        <dt>{% trans "Payer wallet" %}</dt>
+        <dd>
+            {% if payer_url %}
+                <a href="{{ payer_url }}" target="_blank" rel="noopener noreferrer">
+                    <code>{{ info.payer }}</code>
+                </a>
+            {% else %}
+                <code>{{ info.payer }}</code>
+            {% endif %}
+        </dd>
+        {% endif %}
+
+        {% if info.payment_reference %}
+        <dt>{% trans "Payment reference" %}</dt>
+        <dd><code>{{ info.payment_reference }}</code></dd>
+        {% endif %}
+
+        {% if info.confirmed_at %}
+        <dt>{% trans "Confirmed at" %}</dt>
+        <dd>{{ info.confirmed_at }}</dd>
+        {% endif %}
+
+        {% if info.block_number %}
+        <dt>{% trans "Block number" %}</dt>
+        <dd>{{ info.block_number }}</dd>
+        {% endif %}
+    </dl>
+</div>
+{% else %}
+<p>{% trans "No payment details available." %}</p>
+{% endif %}

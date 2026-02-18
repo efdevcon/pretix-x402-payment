@@ -1,0 +1,1 @@
+recursive-include pretix_x402/templates *.html
