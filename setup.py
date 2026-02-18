@@ -9,7 +9,7 @@ setup(
     packages=find_packages(exclude=["tests", "tests.*"]),
     include_package_data=True,
     python_requires=">=3.9",
-    install_requires=[],
+    install_requires=["pretix>=4.16"],
     entry_points="""
 [pretix.plugin]
 pretix_x402=pretix_x402:PretixPluginMeta

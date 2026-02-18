@@ -1,1 +1,3 @@
-recursive-include pretix_x402/templates *.html
+recursive-include pretix_x402/static *
+recursive-include pretix_x402/templates *
+recursive-include pretix_x402/locale *
