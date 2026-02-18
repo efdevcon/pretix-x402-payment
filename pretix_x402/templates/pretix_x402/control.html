@@ -33,7 +33,7 @@
 
         {% if info.amount %}
         <dt>{% trans "Amount" %}</dt>
-        <dd>{{ info.amount }} {{ info.token_symbol }}</dd>
+        <dd>{{ info.amount }}</dd>
         {% endif %}
 
         {% if info.payer %}
@@ -54,9 +54,13 @@
         <dd><code>{{ info.payment_reference }}</code></dd>
         {% endif %}
 
-        {% if info.confirmed_at %}
-        <dt>{% trans "Confirmed at" %}</dt>
-        <dd>{{ info.confirmed_at }}</dd>
+        {% if info.order_url %}
+        <dt>{% trans "Order recap" %}</dt>
+        <dd>
+          <a href="{{ info.order_url }}" target="_blank" rel="noopener noreferrer">
+            {{ info.order_url }}
+          </a>
+        </dd>
         {% endif %}
 
         {% if info.block_number %}
