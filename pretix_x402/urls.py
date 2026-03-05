@@ -1,11 +1,5 @@
-from django.urls import path
+from pretix.api.urls import event_router
 
-from . import api
+from .api import X402PaymentViewSet
 
-urlpatterns = [
-    path(
-        'orders/<str:code>/payments/<int:local_id>/confirm_with_info/',
-        api.confirm_with_payment_info,
-        name='x402-confirm-with-info',
-    ),
-]
+event_router.register('x402', X402PaymentViewSet, basename='event-x402')
