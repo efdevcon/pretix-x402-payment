@@ -72,14 +72,14 @@ class X402CryptoPayment(BasePaymentProvider):
         tx_hash = info.get("tx_hash", "")
         tx_url = f"{explorer_base}/tx/{tx_hash}" if explorer_base and tx_hash else None
 
-        template = get_template("pretix_x402/email_info.html")
-        return template.render(
-            {
-                "info": info,
-                "tx_url": tx_url,
-                "chain_name": chain_name or (f"Chain {chain_id}" if chain_id else None),
-            }
-        )
+        lines = []
+        if info.get("amount"):
+            lines.append(f"Amount: {info['amount']}")
+        if chain_name:
+            lines.append(f"Network: {chain_name}")
+        if tx_url:
+            lines.append(f"Transaction: {tx_url}")
+        return "\n".join(lines)
 
     def payment_control_render_short(self, payment):
         """Short one-line identifier shown in admin order lists."""

@@ -1,4 +1,3 @@
-{% load i18n %}
-{% if info.amount %}{% trans "Amount" %}: {{ info.amount }}{% endif %}
+{% load i18n %}{% if info.amount %}{% trans "Amount" %}: {{ info.amount }}{% endif %}
 {% if chain_name %}{% trans "Network" %}: {{ chain_name }}{% endif %}
 {% if tx_url %}{% trans "Transaction" %}: {{ tx_url }}{% endif %}
