@@ -60,6 +60,27 @@ class X402CryptoPayment(BasePaymentProvider):
             }
         )
 
+    def payment_presale_render(self, payment):
+        """Render payment info for customer-facing emails ({payment_info} placeholder)."""
+        info = payment.info_data or {}
+        if not info:
+            return ""
+
+        chain_id = info.get("chain_id")
+        explorer_base, chain_name = CHAIN_INFO.get(chain_id, (None, None))
+
+        tx_hash = info.get("tx_hash", "")
+        tx_url = f"{explorer_base}/tx/{tx_hash}" if explorer_base and tx_hash else None
+
+        template = get_template("pretix_x402/email_info.html")
+        return template.render(
+            {
+                "info": info,
+                "tx_url": tx_url,
+                "chain_name": chain_name or (f"Chain {chain_id}" if chain_id else None),
+            }
+        )
+
     def payment_control_render_short(self, payment):
         """Short one-line identifier shown in admin order lists."""
         info = payment.info_data or {}

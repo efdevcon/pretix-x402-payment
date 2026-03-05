@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pretix-x402-payment",
-    version="0.1.0",
+    version="0.1.1",
     description="x402 crypto payment provider for Pretix — stores and displays on-chain transaction details",
     author="Devcon",
     url="https://github.com/efdevcon/pretix-x402-payment",
