@@ -79,7 +79,7 @@ class X402CryptoPayment(BasePaymentProvider):
             lines.append(f"Network: {chain_name}")
         if tx_url:
             lines.append(f"Transaction: {tx_url}")
-        return "\n".join(lines)
+        return "\n\n".join(lines)
 
     def payment_control_render_short(self, payment):
         """Short one-line identifier shown in admin order lists."""
