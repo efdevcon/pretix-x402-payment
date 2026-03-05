@@ -60,8 +60,8 @@ class X402CryptoPayment(BasePaymentProvider):
             }
         )
 
-    def order_paid_mail_render(self, payment, order):
-        """Render payment info for the order paid confirmation email ({payment_info} placeholder)."""
+    def order_pending_mail_render(self, order, payment):
+        """Render payment info for email templates ({payment_info} placeholder)."""
         info = payment.info_data or {}
         if not info:
             return ""
